@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI 门店增长顾问 - 日报</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+    padding: 16px;
+  }
+  .dashboard { max-width: 800px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .header-top h1 { font-size: 18px; font-weight: 700; }
+  .header-top h1 span { color: #4fc3f7; }
+  .header-top .date { font-size: 13px; color: rgba(255,255,255,.7); text-align: right; }
+  .header-store {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-store .store-name { font-size: 20px; font-weight: 700; }
+  .header-store .store-name small { font-weight: 400; font-size: 14px; color: rgba(255,255,255,.7); }
+  .header-store .badge {
+    background: rgba(79,195,247,.2);
+    border: 1px solid rgba(79,195,247,.4);
+    color: #4fc3f7;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  /* Score */
+  .hero-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .score-ring {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#4fc3f7 0deg 306deg, #e8eaf6 306deg 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .score-ring-inner {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-ring-inner .num { font-size: 30px; font-weight: 800; color: #1a1a2e; line-height: 1; }
+  .score-ring-inner .label { font-size: 11px; color: #888; }
+  .hero-info { flex: 1; min-width: 160px; }
+  .hero-info .trend { font-size: 14px; color: #666; margin-bottom: 8px; }
+  .hero-info .trend .up { color: #4caf50; font-weight: 600; }
+  .hero-info .trend .down { color: #f44336; font-weight: 600; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hero-tags .tag {
+    background: #e3f2fd; color: #1565c0;
+    padding: 3px 10px; border-radius: 10px; font-size: 11px;
+  }
+  .hero-tags .tag.warn { background: #fff3e0; color: #e65100; }
+  .hero-tags .tag.success { background: #e8f5e9; color: #2e7d32; }
+
+  /* Metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 500px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+  }
+  .metric-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    text-align: center;
+  }
+  .metric-card .m-icon { font-size: 20px; }
+  .metric-card .m-label { font-size: 11px; color: #888; margin: 2px 0; }
+  .metric-card .m-value { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+  .metric-card .m-change { font-size: 11px; }
+  .metric-card .m-change.up { color: #4caf50; }
+  .metric-card .m-change.down { color: #f44336; }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f2f5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Findings */
+  .findings { list-style: none; }
+  .findings li { padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+  .findings li:last-child { border-bottom: none; }
+  .findings .finding-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .findings .finding-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    background: #1a1a2e; color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .findings .finding-source { font-weight: 600; color: #0f3460; font-size: 13px; }
+  .findings .finding-data { color: #333; font-size: 13px; margin-bottom: 4px; }
+  .findings .finding-suggest {
+    font-size: 12px;
+    color: #1565c0;
+    padding-left: 26px;
+  }
+  .findings .finding-suggest::before { content: "💡 "; }
+
+  /* Advice */
+  .advice-card { background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); border-left: 4px solid #4fc3f7; }
+  .advice-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .advice-item:last-child { margin-bottom: 0; }
+  .advice-item .advice-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .advice-item .advice-desc { font-size: 13px; color: #555; }
+  .advice-item .advice-pred {
+    font-size: 12px;
+    color: #4caf50;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed #e0e0e0;
+  }
+
+  /* Competitors */
+  .competitor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .competitor:last-child { border-bottom: none; }
+  .competitor .c-name { font-weight: 600; min-width: 50px; font-size: 13px; }
+  .competitor .c-action { flex: 1; font-size: 13px; color: #333; }
+  .competitor .c-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    flex-shrink: 0;
+  }
+  .competitor .c-tag.warn { background: #fff3e0; color: #e65100; }
+
+  /* ===== 建议追踪 ===== */
+  .advice-track { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .advice-track th { text-align: left; padding: 6px; font-weight: 600; color: #555; border-bottom: 2px solid #e8eaf6; font-size: 11px; }
+  .advice-track td { padding: 8px 6px; border-bottom: 1px solid #f0f2f5; font-size: 12px; }
+  .advice-track .status-done { color: #4caf50; font-weight: 600; }
+  .advice-track .status-pending { color: #ff9800; font-weight: 600; }
+  .advice-track .status-skip { color: #999; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 24px;
+    padding: 12px 0;
+  }
+  .footer .ai-badge {
+    display: inline-block;
+    background: #1a1a2e;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    margin-right: 4px;
+  }
+
+  /* Store selector for user (if multiple stores shared on same device) */
+  .store-selector {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 12px;
+    margin-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .store-selector::-webkit-scrollbar { display: none; }
+  .store-selector button {
+    padding: 6px 16px;
+    border: 1.5px solid #ddd;
+    background: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .2s;
+    flex-shrink: 0;
+  }
+  .store-selector button.active {
+    border-color: #0f3460;
+    background: #0f3460;
+    color: #fff;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .dashboard > * { animation: fadeUp .4s ease both; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .store-selector { display: none; }
+    .header { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .score-ring { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .advice-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard" id="app">
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header-top">
+      <h1>☕ <span>AI</span> 门店增长顾问</h1>
+      <div class="date" id="currentDate"></div>
+    </div>
+    <div class="header-store">
+      <div class="store-name" id="storeName">XX咖啡店 <small>· 湖滨店</small></div>
+      <div class="badge">📊 今日日报</div>
+    </div>
+  </header>
+
+  <!-- ===== 门店切换（如果有多家店） ===== -->
+  <div class="store-selector" id="storeSelector"></div>
+
+  <!-- ===== 评分大卡 ===== -->
+  <div class="hero-card">
+    <div class="score-ring">
+      <div class="score-ring-inner">
+        <span class="num" id="scoreNum">85</span>
+        <span class="label">今日评分</span>
+      </div>
+    </div>
+    <div class="hero-info">
+      <div class="trend">
+        昨日营业额 <strong id="revenue">¥9,623</strong>
+        &nbsp;·&nbsp; 同比 <span class="up" id="revenueYoY">+8%</span>
+        &nbsp;·&nbsp; 环比 <span class="up" id="revenueMoM">+3.2%</span>
+      </div>
+      <div class="hero-tags" id="heroTags">
+        <span class="tag">📈 小红书收藏 +32%</span>
+        <span class="tag warn">⚠️ 差评 +2</span>
+        <span class="tag success">✅ 建议已送达</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 核心指标 ===== -->
+  <div class="metrics">
+    <div class="metric-card">
+      <div class="m-icon">👥</div>
+      <div class="m-label">客流</div>
+      <div class="m-value" id="mTraffic">168</div>
+      <div class="m-change up" id="mTrafficChg">↑ 12%</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-icon">💳</div>
+      <div class="m-label">客单价</div>
+      <div class="m-value" id="mTicket">¥57.3</div>
+      <div class="m-change up" id="mTicketChg">↑ 5%</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-icon">📱</div>
+      <div class="m-label">小红书</div>
+      <div class="m-value" id="mSocial">2.3w</div>
+      <div class="m-change up" id="mSocialChg">↑ 32%</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-icon">⭐</div>
+      <div class="m-label">点评评分</div>
+      <div class="m-value" id="mRating">4.2</div>
+      <div class="m-change down" id="mRatingChg">↓ 0.3</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-icon">📦</div>
+      <div class="m-label">外卖单</div>
+      <div class="m-value" id="mDelivery">47</div>
+      <div class="m-change up" id="mDeliveryChg">↑ 8%</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-icon">🔄</div>
+      <div class="m-label">复购率</div>
+      <div class="m-value" id="mRepeat">23%</div>
+      <div class="m-change up" id="mRepeatChg">↑ 1.8%</div>
+    </div>
+  </div>
+
+  <!-- ===== AI发现 ===== -->
+  <div class="card">
+    <div class="card-title">🔍 AI 经营发现</div>
+    <ul class="findings" id="findings"></ul>
+  </div>
+
+  <!-- ===== 今日建议 ===== -->
+  <div class="card advice-card">
+    <div class="card-title">🎯 今日行动建议</div>
+    <div id="adviceList"></div>
+  </div>
+
+  <!-- ===== 竞争动态 ===== -->
+  <div class="card">
+    <div class="card-title">🏪 竞争动态 · 周边500m</div>
+    <div id="competitors"></div>
+  </div>
+
+  <!-- ===== 建议追踪 ===== -->
+  <div class="card" id="adviceTrackCard" style="display:none;">
+    <div class="card-title">📋 建议执行追踪</div>
+    <div id="adviceTrackBody"></div>
+  </div>
+
+  <div class="footer">
+    <span class="ai-badge">AI</span>
+    由 AI 门店增长顾问自动生成 · 数据仅供经营参考
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  数据源 — 从 localStorage 读取（与管理员共享）
+// ============================================================
+const DEFAULT_DATA = {
+  coffee: {
+    name: 'XX咖啡店', branch: '湖滨店',
+    score: 85, revenue: 9623, revenueYoY: '+8%', revenueMoM: '+3.2%',
+    traffic: 168, trafficChg: '+12%', ticket: 57.3, ticketChg: '+5%',
+    social: '2.3w', socialChg: '+32%', rating: 4.2, ratingChg: '-0.3',
+    delivery: 47, deliveryChg: '+8%', repeat: '23%', repeatChg: '+1.8%',
+    tags: [
+      { text: '📈 小红书收藏 +32%', cls: '' },
+      { text: '⚠️ 差评 +2', cls: 'warn' },
+      { text: '✅ 建议已送达', cls: 'success' },
+    ],
+    findings: [
+      { source: '小红书', data: '收藏率上涨 32%，笔记「制作过程」系列互动最高', suggest: '继续拍摄制作过程系列，今天加拍一条「拉花失败合集」' },
+      { source: '点评', data: '新增 2条差评，关键词：「等太久」「味道淡」', suggest: '今天立即回复差评，邀请再次到店送一杯新品' },
+      { source: '私域', data: '社群活跃度下降 15%，上周未发任何优惠券', suggest: '今天在社群发一张「老客专享·买一送一」券' },
+      { source: '天气', data: '今日阴天，气温 22°C，适合热饮推广', suggest: '主推热拿铁/热巧克力，门口小黑板写「降温了，进来暖一暖」' },
+    ],
+    advice: [
+      { title: '📱 拍一条「老板为什么坚持现磨」', desc: '用手机拍摄 45 秒短视频，发小红书 + 抖音', pred: '预计浏览 2万 · 互动率 >5%' },
+      { title: '💰 今日限定「上班族早安套餐」', desc: '美式 + 可颂 = ¥22.9（原价 ¥32），限 10:00 前', pred: '预计带动早间营收 +18%' },
+      { title: '📊 回复所有差评 + 邀请复购', desc: '重点回复昨天 2 条差评，送一杯新品邀请', pred: '预计评分 1 周内回升至 4.4' },
+    ],
+    competitors: [
+      { name: '瑞幸', action: '开始推「29元下午茶套餐」', tag: '不要跟价', tagCls: 'warn' },
+      { name: '星巴克', action: '新上「桂花系列」3 款饮品', tag: '关注热度', tagCls: '' },
+      { name: 'Manner', action: '自带杯立减 5 元活动延长', tag: '差异化定位', tagCls: '' },
+    ],
+    adviceHistory: [
+      { date: '07/08', advice: [
+        { title: '优化高峰时段排班', executed: 'done', result: '播放4200' },
+        { title: '推出第二杯半价活动', executed: 'done', result: '客单价+6元' },
+        { title: '拍摄一条门店日常Vlog', executed: 'done', result: '评分4.0->4.3' },
+      ]},
+      { date: '07/09', advice: [
+        { title: '优化出餐流程减少等待', executed: 'done', result: '客单价+6元' },
+        { title: '主推季节限定新品', executed: 'done', result: '曝光3000' },
+        { title: '推出第二杯半价活动', executed: 'done', result: '播放2.3w,互动率5.1%' },
+      ]},
+      { date: '07/10', advice: [
+        { title: '优化会员积分体系', executed: 'pending', result: '' },
+        { title: '联合周边花店做跨界活动', executed: 'done', result: '复购率+3.2%' },
+        { title: '拍手冲咖啡教学视频', executed: 'done', result: '曝光增长42%' },
+      ]},
+      { date: '07/11', advice: [
+        { title: '提升外卖包装品质', executed: 'done', result: '播放2.7w' },
+        { title: '周边新店开业应对方案', executed: 'done', result: '带来5桌新客' },
+        { title: '调整外卖平台满减策略', executed: 'done', result: '曝光增长42%' },
+      ]},
+      { date: '07/12', advice: [
+        { title: '针对竞品差评做对比营销', executed: 'done', result: '播放3.1w,点赞680' },
+        { title: '提升客单价推套餐组合', executed: 'done', result: '播放3.1w,点赞680' },
+        { title: '拍手冲咖啡教学视频', executed: 'done', result: '曝光增长42%' },
+      ]},
+      { date: '07/13', advice: [
+        { title: '回复所有差评邀请复购', executed: 'done', result: '营收+15%' },
+        { title: '分析顾客画像优化产品', executed: 'pending', result: '' },
+        { title: '提升外卖包装品质', executed: 'pending', result: '' },
+      ]},
+      { date: '07/14', advice: [
+        { title: '在社群发优惠券激活沉默用户', executed: 'done', result: '客单价+6元' },
+        { title: '推出第二杯半价活动', executed: 'pending', result: '' },
+        { title: '提升客单价推套餐组合', executed: 'done', result: '转化一般' },
+      ]},
+      { date: '07/15', advice: [
+        { title: '邀请小红书博主到店体验', executed: 'done', result: '会员增长45人' },
+        { title: '提升复购率方案', executed: 'done', result: '到店转化12桌' },
+        { title: '分析畅销品调整库存', executed: 'done', result: '播放3.1w,点赞680' },
+      ]},
+      { date: '07/16', advice: [
+        { title: '分析客流高峰调整营业时间', executed: 'done', result: '会员增长45人' },
+        { title: '毕业季学生优惠活动', executed: 'pending', result: '' },
+        { title: '推出第二杯半价活动', executed: 'skip', result: '' },
+      ]},
+      { date: '07/17', advice: [
+        { title: '分析竞品新品热度', executed: 'done', result: '播放1.8w,收藏520' },
+        { title: '老板出镜回应顾客评论', executed: 'pending', result: '' },
+        { title: '毕业季学生优惠活动', executed: 'done', result: '外卖单量+25%' },
+      ]},
+      { date: '07/18', advice: [
+        { title: '每月新品投票活动', executed: 'pending', result: '' },
+        { title: '调整外卖平台满减策略', executed: 'done', result: '播放1.8w,收藏520' },
+        { title: '调整定价策略提升毛利', executed: 'pending', result: '' },
+      ]},
+      { date: '07/19', advice: [
+        { title: '提升客单价推套餐组合', executed: 'pending', result: '' },
+        { title: '抖音发深夜咖啡氛围视频', executed: 'pending', result: '' },
+        { title: '毕业季学生优惠活动', executed: 'pending', result: '' },
+      ]},
+      { date: '07/20', advice: [
+        { title: '每月新品投票活动', executed: 'done', result: '只有8人参与' },
+        { title: '差异化定位主打手冲', executed: 'pending', result: '' },
+        { title: '差异化定位主打手冲', executed: 'done', result: '只有8人参与' },
+      ]},
+      { date: '07/21', advice: [
+        { title: '优化高峰时段排班', executed: 'pending', result: '' },
+        { title: '老板出镜回应顾客评论', executed: 'pending', result: '' },
+        { title: '优化会员积分体系', executed: 'pending', result: '' },
+      ]},
+      { date: '07/22', advice: [
+        { title: '周边新店开业应对方案', executed: 'done', result: '月营收增长8%' },
+        { title: '老板出镜讲品牌故事', executed: 'done', result: '只有8人参与' },
+        { title: '在社群发优惠券激活沉默用户', executed: 'done', result: '会员增长45人' },
+      ]},
+      { date: '07/23', advice: [
+        { title: '拍摄一条门店日常Vlog', executed: 'done', result: '带来5桌新客' },
+        { title: '优化会员积分体系', executed: 'pending', result: '' },
+        { title: '拍新品试喝反应视频', executed: 'skip', result: '' },
+      ]},
+      { date: '07/24', advice: [
+        { title: '调整外卖平台满减策略', executed: 'pending', result: '' },
+        { title: '优化菜单陈列突出主推款', executed: 'skip', result: '' },
+        { title: '优化出餐流程减少等待', executed: 'pending', result: '' },
+      ]},
+    ]
+  }
+};
+
+async function loadData() {
+  try {
+    const resp = await fetch('https://raw.githubusercontent.com/yuziyang757-lang/store-dashboard/main/data/store-data.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    for (const key of Object.keys(DEFAULT_DATA)) {
+      if (!data[key]) data[key] = JSON.parse(JSON.stringify(DEFAULT_DATA[key]));
+    }
+    return data;
+  } catch(e) {
+    console.warn('Fail load from GitHub, use default', e);
+    return JSON.parse(JSON.stringify(DEFAULT_DATA));
+  }
+}
+
+// ============================================================
+//  获取 URL 参数
+// ============================================================
+function getUrlParam(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+// ============================================================
+//  渲染
+// ============================================================
+function renderDashboard(storeKey, data) {
+  const d = data[storeKey];
+  if (!d) return;
+
+  document.getElementById('storeName').innerHTML = `${d.name} <small>· ${d.branch || ''}</small>`;
+  document.getElementById('scoreNum').textContent = d.score;
+  document.getElementById('revenue').textContent = '¥' + Number(d.revenue).toLocaleString();
+  document.getElementById('revenueYoY').textContent = d.revenueYoY || '-';
+  document.getElementById('revenueMoM').textContent = d.revenueMoM || '-';
+  document.getElementById('revenueYoY').className = (d.revenueYoY || '').startsWith('+') ? 'up' : 'down';
+  document.getElementById('revenueMoM').className = (d.revenueMoM || '').startsWith('+') ? 'up' : 'down';
+
+  document.getElementById('heroTags').innerHTML = (d.tags || []).map(t =>
+    `<span class="tag${t.cls ? ' ' + t.cls : ''}">${t.text}</span>`
+  ).join('');
+
+  document.getElementById('mTraffic').textContent = d.traffic;
+  document.getElementById('mTrafficChg').textContent = '↑ ' + (d.trafficChg || '');
+  document.getElementById('mTicket').textContent = '¥' + d.ticket;
+  document.getElementById('mTicketChg').textContent = (d.ticketChg || '').startsWith('+') ? '↑ ' + d.ticketChg : '↓ ' + d.ticketChg;
+  document.getElementById('mSocial').textContent = d.social;
+  document.getElementById('mSocialChg').textContent = (d.socialChg || '').startsWith('+') ? '↑ ' + d.socialChg : '↓ ' + d.socialChg;
+  document.getElementById('mRating').textContent = d.rating;
+  const rc = d.ratingChg || '';
+  document.getElementById('mRatingChg').textContent = rc.startsWith('-') ? '↓ ' + rc : '↑ ' + rc;
+  document.getElementById('mDelivery').textContent = d.delivery;
+  document.getElementById('mDeliveryChg').textContent = (d.deliveryChg || '').startsWith('+') ? '↑ ' + d.deliveryChg : '↓ ' + d.deliveryChg;
+  document.getElementById('mRepeat').textContent = d.repeat;
+  document.getElementById('mRepeatChg').textContent = (d.repeatChg || '').startsWith('+') ? '↑ ' + d.repeatChg : '↓ ' + d.repeatChg;
+
+  document.getElementById('findings').innerHTML = (d.findings || []).map((f, i) =>
+    `<li><div class="finding-header"><span class="finding-num">${i + 1}</span><span class="finding-source">${f.source}</span></div><div class="finding-data">${f.data}</div><div class="finding-suggest">${f.suggest}</div></li>`
+  ).join('');
+
+  document.getElementById('adviceList').innerHTML = (d.advice || []).map(a =>
+    `<div class="advice-item"><div class="advice-title">${a.title}</div><div class="advice-desc">${a.desc}</div><div class="advice-pred">📊 ${a.pred}</div></div>`
+  ).join('');
+
+  document.getElementById('competitors').innerHTML = (d.competitors || []).map(c =>
+    `<div class="competitor"><span class="c-name">${c.name}</span><span class="c-action">${c.action}</span><span class="c-tag${c.tagCls ? ' ' + c.tagCls : ''}">${c.tag}</span></div>`
+  ).join('');
+
+  // 建议追踪
+  const history = d.adviceHistory || [];
+  const trackCard = document.getElementById('adviceTrackCard');
+  const trackBody = document.getElementById('adviceTrackBody');
+
+  if (!history || history.length === 0) {
+    trackCard.style.display = 'none';
+    return;
+  }
+
+  trackCard.style.display = 'block';
+  const recent = history.slice(-7);
+
+  let totalDone = 0, totalAdvice = 0;
+  recent.forEach(day => {
+    (day.advice || []).forEach(a => {
+      totalAdvice++;
+      if (a.executed === 'done') totalDone++;
+    });
+  });
+  const execRate = totalAdvice > 0 ? Math.round(totalDone / totalAdvice * 100) : 0;
+
+  let html = `<table class="advice-track">
+    <tr><th>日期</th><th>建议</th><th>执行</th><th>效果</th></tr>`;
+
+  recent.reverse().forEach(day => {
+    const dateStr = day.date || '未知';
+    const advices = day.advice || [];
+    advices.forEach((a, i) => {
+      const statusText = a.executed === 'done' ? '✅ 已执行' : a.executed === 'skip' ? '⏭ 跳过' : '⏳ 待执行';
+      const statusClass = a.executed === 'done' ? 'status-done' : a.executed === 'skip' ? 'status-skip' : 'status-pending';
+      html += `<tr>
+        ${i === 0 ? `<td rowspan="${advices.length}" style="white-space:nowrap;font-weight:600;">${dateStr}</td>` : ''}
+        <td>${a.title}</td>
+        <td class="${statusClass}">${statusText}</td>
+        <td>${a.result || '—'}</td>
+      </tr>`;
+    });
+  });
+
+  html += `</table>
+    <div class="advice-summary">
+      <div class="stat"><span class="num">${totalAdvice}</span><span class="label">条建议</span></div>
+      <div class="stat"><span class="num">${execRate}%</span><span class="label">执行率</span></div>
+    </div>`;
+
+  trackBody.innerHTML = html;
+}
+
+// ============================================================
+//  门店选择器（只读模式）
+// ============================================================
+function renderStoreSelector(data, currentKey) {
+  const container = document.getElementById('storeSelector');
+  const keys = Object.keys(data);
+  if (keys.length <= 1) {
+    container.style.display = 'none';
+    return;
+  }
+  container.style.display = 'flex';
+  container.innerHTML = '';
+  keys.forEach(key => {
+    const btn = document.createElement('button');
+    btn.textContent = data[key].name;
+    btn.dataset.store = key;
+    if (key === currentKey) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      renderDashboard(this.dataset.store, data);
+      // 更新 URL 参数（不刷新页面）
+      const url = new URL(window.location);
+      url.searchParams.set('store', this.dataset.store);
+      window.history.replaceState({}, '', url);
+    });
+    container.appendChild(btn);
+  });
+}
+
+// ============================================================
+//  初始化
+// ============================================================
+(async function(){
+const data = await loadData();
+const storeKeys = Object.keys(data);
+const storeParam = getUrlParam('store');
+const currentStore = (storeParam && data[storeParam]) ? storeParam : storeKeys[0];
+document.getElementById('currentDate').textContent =
+  new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+renderStoreSelector(data, currentStore);
+renderDashboard(currentStore, data);
+})();
+</script>
+</body>
+</html>

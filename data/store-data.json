@@ -1,0 +1,827 @@
+{
+  "coffee": {
+    "name": "XX咖啡店",
+    "branch": "湖滨店",
+    "score": 85,
+    "revenue": 9623,
+    "revenueYoY": "+8%",
+    "revenueMoM": "+3.2%",
+    "traffic": 168,
+    "trafficChg": "+12%",
+    "ticket": 57.3,
+    "ticketChg": "+5%",
+    "social": "2.3w",
+    "socialChg": "+32%",
+    "rating": 4.2,
+    "ratingChg": "-0.3",
+    "delivery": 47,
+    "deliveryChg": "+8%",
+    "repeat": "23%",
+    "repeatChg": "+1.8%",
+    "tags": [
+      {
+        "text": "📈 小红书收藏 +32%",
+        "cls": ""
+      },
+      {
+        "text": "⚠️ 差评 +2",
+        "cls": "warn"
+      },
+      {
+        "text": "✅ 建议已送达",
+        "cls": "success"
+      }
+    ],
+    "findings": [
+      {
+        "source": "小红书",
+        "data": "收藏率上涨 32%，笔记「制作过程」系列互动最高",
+        "suggest": "继续拍摄制作过程系列，今天加拍一条「拉花失败合集」"
+      },
+      {
+        "source": "点评",
+        "data": "新增 2条差评，关键词：「等太久」「味道淡」",
+        "suggest": "今天立即回复差评，邀请再次到店送一杯新品"
+      },
+      {
+        "source": "私域",
+        "data": "社群活跃度下降 15%，上周未发任何优惠券",
+        "suggest": "今天在社群发一张「老客专享·买一送一」券"
+      },
+      {
+        "source": "天气",
+        "data": "今日阴天，气温 22°C，适合热饮推广",
+        "suggest": "主推热拿铁/热巧克力，门口小黑板写「降温了，进来暖一暖」"
+      }
+    ],
+    "advice": [
+      {
+        "title": "📱 拍一条「老板为什么坚持现磨」",
+        "desc": "用手机拍摄 45 秒短视频，发小红书 + 抖音",
+        "pred": "预计浏览 2万 · 互动率 >5%"
+      },
+      {
+        "title": "💰 今日限定「上班族早安套餐」",
+        "desc": "美式 + 可颂 = ¥22.9（原价 ¥32），限 10:00 前",
+        "pred": "预计带动早间营收 +18%"
+      },
+      {
+        "title": "📊 回复所有差评 + 邀请复购",
+        "desc": "重点回复昨天 2 条差评，送一杯新品邀请",
+        "pred": "预计评分 1 周内回升至 4.4"
+      }
+    ],
+    "competitors": [
+      {
+        "name": "瑞幸",
+        "action": "开始推「29元下午茶套餐」",
+        "tag": "不要跟价",
+        "tagCls": "warn"
+      },
+      {
+        "name": "星巴克",
+        "action": "新上「桂花系列」3 款饮品",
+        "tag": "关注热度",
+        "tagCls": ""
+      },
+      {
+        "name": "Manner",
+        "action": "自带杯立减 5 元活动延长",
+        "tag": "差异化定位",
+        "tagCls": ""
+      }
+    ],
+    "adviceHistory": [
+      {
+        "date": "07/08",
+        "advice": [
+          {
+            "title": "优化高峰时段排班",
+            "executed": "done",
+            "result": "播放4200"
+          },
+          {
+            "title": "推出第二杯半价活动",
+            "executed": "done",
+            "result": "客单价+6元"
+          },
+          {
+            "title": "拍摄一条门店日常Vlog",
+            "executed": "done",
+            "result": "评分4.0->4.3"
+          }
+        ]
+      },
+      {
+        "date": "07/09",
+        "advice": [
+          {
+            "title": "优化出餐流程减少等待",
+            "executed": "done",
+            "result": "客单价+6元"
+          },
+          {
+            "title": "主推季节限定新品",
+            "executed": "done",
+            "result": "曝光3000"
+          },
+          {
+            "title": "推出第二杯半价活动",
+            "executed": "done",
+            "result": "播放2.3w,互动率5.1%"
+          }
+        ]
+      },
+      {
+        "date": "07/10",
+        "advice": [
+          {
+            "title": "优化会员积分体系",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "联合周边花店做跨界活动",
+            "executed": "done",
+            "result": "复购率+3.2%"
+          },
+          {
+            "title": "拍手冲咖啡教学视频",
+            "executed": "done",
+            "result": "曝光增长42%"
+          }
+        ]
+      },
+      {
+        "date": "07/11",
+        "advice": [
+          {
+            "title": "提升外卖包装品质",
+            "executed": "done",
+            "result": "播放2.7w"
+          },
+          {
+            "title": "周边新店开业应对方案",
+            "executed": "done",
+            "result": "带来5桌新客"
+          },
+          {
+            "title": "调整外卖平台满减策略",
+            "executed": "done",
+            "result": "曝光增长42%"
+          }
+        ]
+      },
+      {
+        "date": "07/12",
+        "advice": [
+          {
+            "title": "针对竞品差评做对比营销",
+            "executed": "done",
+            "result": "播放3.1w,点赞680"
+          },
+          {
+            "title": "提升客单价推套餐组合",
+            "executed": "done",
+            "result": "播放3.1w,点赞680"
+          },
+          {
+            "title": "拍手冲咖啡教学视频",
+            "executed": "done",
+            "result": "曝光增长42%"
+          }
+        ]
+      },
+      {
+        "date": "07/13",
+        "advice": [
+          {
+            "title": "回复所有差评邀请复购",
+            "executed": "done",
+            "result": "营收+15%"
+          },
+          {
+            "title": "分析顾客画像优化产品",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "提升外卖包装品质",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/14",
+        "advice": [
+          {
+            "title": "在社群发优惠券激活沉默用户",
+            "executed": "done",
+            "result": "客单价+6元"
+          },
+          {
+            "title": "推出第二杯半价活动",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "提升客单价推套餐组合",
+            "executed": "done",
+            "result": "转化一般"
+          }
+        ]
+      },
+      {
+        "date": "07/15",
+        "advice": [
+          {
+            "title": "邀请小红书博主到店体验",
+            "executed": "done",
+            "result": "会员增长45人"
+          },
+          {
+            "title": "提升复购率方案",
+            "executed": "done",
+            "result": "到店转化12桌"
+          },
+          {
+            "title": "分析畅销品调整库存",
+            "executed": "done",
+            "result": "播放3.1w,点赞680"
+          }
+        ]
+      },
+      {
+        "date": "07/16",
+        "advice": [
+          {
+            "title": "分析客流高峰调整营业时间",
+            "executed": "done",
+            "result": "会员增长45人"
+          },
+          {
+            "title": "毕业季学生优惠活动",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "推出第二杯半价活动",
+            "executed": "skip",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/17",
+        "advice": [
+          {
+            "title": "分析竞品新品热度",
+            "executed": "done",
+            "result": "播放1.8w,收藏520"
+          },
+          {
+            "title": "老板出镜回应顾客评论",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "毕业季学生优惠活动",
+            "executed": "done",
+            "result": "外卖单量+25%"
+          }
+        ]
+      },
+      {
+        "date": "07/18",
+        "advice": [
+          {
+            "title": "每月新品投票活动",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "调整外卖平台满减策略",
+            "executed": "done",
+            "result": "播放1.8w,收藏520"
+          },
+          {
+            "title": "调整定价策略提升毛利",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/19",
+        "advice": [
+          {
+            "title": "提升客单价推套餐组合",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "抖音发深夜咖啡氛围视频",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "毕业季学生优惠活动",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/20",
+        "advice": [
+          {
+            "title": "每月新品投票活动",
+            "executed": "done",
+            "result": "只有8人参与"
+          },
+          {
+            "title": "差异化定位主打手冲",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "差异化定位主打手冲",
+            "executed": "done",
+            "result": "只有8人参与"
+          }
+        ]
+      },
+      {
+        "date": "07/21",
+        "advice": [
+          {
+            "title": "优化高峰时段排班",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "老板出镜回应顾客评论",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "优化会员积分体系",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/22",
+        "advice": [
+          {
+            "title": "周边新店开业应对方案",
+            "executed": "done",
+            "result": "月营收增长8%"
+          },
+          {
+            "title": "老板出镜讲品牌故事",
+            "executed": "done",
+            "result": "只有8人参与"
+          },
+          {
+            "title": "在社群发优惠券激活沉默用户",
+            "executed": "done",
+            "result": "会员增长45人"
+          }
+        ]
+      },
+      {
+        "date": "07/23",
+        "advice": [
+          {
+            "title": "拍摄一条门店日常Vlog",
+            "executed": "done",
+            "result": "带来5桌新客"
+          },
+          {
+            "title": "优化会员积分体系",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "拍新品试喝反应视频",
+            "executed": "skip",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/24",
+        "advice": [
+          {
+            "title": "调整外卖平台满减策略",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "优化菜单陈列突出主推款",
+            "executed": "skip",
+            "result": ""
+          },
+          {
+            "title": "优化出餐流程减少等待",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      }
+    ],
+    "dailyMetrics": [
+      {
+        "date": "07/08",
+        "revenue": 8507,
+        "traffic": 152,
+        "ticket": 51.1,
+        "rating": 4.0
+      },
+      {
+        "date": "07/09",
+        "revenue": 8620,
+        "traffic": 137,
+        "ticket": 54.9,
+        "rating": 4.1
+      },
+      {
+        "date": "07/10",
+        "revenue": 9097,
+        "traffic": 138,
+        "ticket": 52.1,
+        "rating": 4.0
+      },
+      {
+        "date": "07/11",
+        "revenue": 9083,
+        "traffic": 179,
+        "ticket": 53.2,
+        "rating": 3.8
+      },
+      {
+        "date": "07/12",
+        "revenue": 9293,
+        "traffic": 184,
+        "ticket": 51.1,
+        "rating": 4.1
+      },
+      {
+        "date": "07/13",
+        "revenue": 8543,
+        "traffic": 135,
+        "ticket": 54.1,
+        "rating": 4.0
+      },
+      {
+        "date": "07/14",
+        "revenue": 10254,
+        "traffic": 137,
+        "ticket": 51.2,
+        "rating": 3.9
+      },
+      {
+        "date": "07/15",
+        "revenue": 10318,
+        "traffic": 144,
+        "ticket": 53.8,
+        "rating": 4.0
+      },
+      {
+        "date": "07/16",
+        "revenue": 9676,
+        "traffic": 159,
+        "ticket": 56.1,
+        "rating": 3.8
+      },
+      {
+        "date": "07/17",
+        "revenue": 9324,
+        "traffic": 164,
+        "ticket": 56.8,
+        "rating": 4.0
+      },
+      {
+        "date": "07/18",
+        "revenue": 10381,
+        "traffic": 181,
+        "ticket": 58.3,
+        "rating": 4.1
+      },
+      {
+        "date": "07/19",
+        "revenue": 10667,
+        "traffic": 163,
+        "ticket": 50.2,
+        "rating": 4.2
+      },
+      {
+        "date": "07/20",
+        "revenue": 10023,
+        "traffic": 175,
+        "ticket": 55.6,
+        "rating": 4.1
+      },
+      {
+        "date": "07/21",
+        "revenue": 10331,
+        "traffic": 185,
+        "ticket": 57.8,
+        "rating": 4.2
+      },
+      {
+        "date": "07/22",
+        "revenue": 10066,
+        "traffic": 193,
+        "ticket": 55.5,
+        "rating": 4.1
+      },
+      {
+        "date": "07/23",
+        "revenue": 10735,
+        "traffic": 199,
+        "ticket": 58.4,
+        "rating": 4.2
+      },
+      {
+        "date": "07/24",
+        "revenue": 9169,
+        "traffic": 182,
+        "ticket": 58.6,
+        "rating": 3.9
+      }
+    ]
+  },
+  "tea": {
+    "name": "XX奶茶店",
+    "branch": "万达店",
+    "score": 78,
+    "revenue": 7230,
+    "revenueYoY": "-2%",
+    "revenueMoM": "+0.5%",
+    "traffic": 203,
+    "trafficChg": "+3%",
+    "ticket": 35.6,
+    "ticketChg": "-4%",
+    "social": "4.1w",
+    "socialChg": "+18%",
+    "rating": 4.0,
+    "ratingChg": "-0.1",
+    "delivery": 89,
+    "deliveryChg": "+22%",
+    "repeat": "18%",
+    "repeatChg": "+0.3%",
+    "tags": [
+      {
+        "text": "📈 外卖单量 +22%",
+        "cls": ""
+      },
+      {
+        "text": "⚠️ 客单价下降 4%",
+        "cls": "warn"
+      },
+      {
+        "text": "🔥 新品「杨梅冰」热度高",
+        "cls": "success"
+      }
+    ],
+    "findings": [
+      {
+        "source": "外卖平台",
+        "data": "杨梅冰上线 3天售出 212 杯，五星好评率 91%",
+        "suggest": "把杨梅冰设为招牌推荐位，拍一条制作视频发抖音"
+      },
+      {
+        "source": "小红书",
+        "data": "同城奶茶探店笔记曝光下降 25%",
+        "suggest": "今天找 2 个本地探店博主免费送新品"
+      },
+      {
+        "source": "点评",
+        "data": "收到 1条差评：\"果肉太少\"",
+        "suggest": "回复并承诺下次加量，私信送一张免费升级券"
+      },
+      {
+        "source": "竞品",
+        "data": "隔壁「一点点」全线降价 1-2 元",
+        "suggest": "不要直接降价，改成「第二杯半价」维持价格感知"
+      }
+    ],
+    "advice": [
+      {
+        "title": "🔥 主推：杨梅冰系列",
+        "desc": "门口易拉宝 + 店员话术主推",
+        "pred": "预计日销 +30 杯"
+      },
+      {
+        "title": "📱 拍杨梅冰制作过程",
+        "desc": "突出杨梅果肉多、颜色好看",
+        "pred": "预计曝光 1.5w+"
+      },
+      {
+        "title": "🎯 第二杯半价稳住客单",
+        "desc": "应对一点点降价，不跟价",
+        "pred": "预计维持客单在 ¥34+"
+      }
+    ],
+    "competitors": [
+      {
+        "name": "一点点",
+        "action": "全线降价 1-2 元",
+        "tag": "不跟价",
+        "tagCls": "warn"
+      },
+      {
+        "name": "喜茶",
+        "action": "新推「轻乳茶」系列",
+        "tag": "关注",
+        "tagCls": ""
+      },
+      {
+        "name": "蜜雪冰城",
+        "action": "甜筒第二支半价",
+        "tag": "不同客群",
+        "tagCls": ""
+      }
+    ],
+    "adviceHistory": []
+  },
+  "bbq": {
+    "name": "胖子烧烤·夜市总店",
+    "branch": "建设路夜市店",
+    "score": 74,
+    "revenue": 12850,
+    "revenueYoY": "+15%",
+    "revenueMoM": "+6%",
+    "traffic": 89,
+    "trafficChg": "+20%",
+    "ticket": 144.4,
+    "ticketChg": "-2%",
+    "social": "1.1w",
+    "socialChg": "+45%",
+    "rating": 3.8,
+    "ratingChg": "-0.2",
+    "delivery": 12,
+    "deliveryChg": "+50%",
+    "repeat": "31%",
+    "repeatChg": "+2.5%",
+    "tags": [
+      {
+        "text": "📈 抖音探店播放 +45%",
+        "cls": ""
+      },
+      {
+        "text": "⚠️ 评分降至 3.8",
+        "cls": "warn"
+      },
+      {
+        "text": "🔥 翻台率 1.8 低于均值",
+        "cls": "success"
+      }
+    ],
+    "findings": [
+      {
+        "source": "抖音",
+        "data": "探店视频播放暴涨 45%，评论区需求：「有没有包厢」「能不能提前订位」",
+        "suggest": "回复评论区说有包厢和半开放卡座，引导到店预约，今天再追一条老板出镜回应视频"
+      },
+      {
+        "source": "点评",
+        "data": "近 7 天评分从 4.0 降至 3.8，差评集中在「上菜慢」「等了40分钟」",
+        "suggest": "优化出餐流程：高峰期安排专人催单、赠送等餐小食（毛豆/花生），降低等待焦虑"
+      },
+      {
+        "source": "经营",
+        "data": "翻台率 1.8，低于同区域平均 2.3；晚高峰 19:00-20:00 排队最长",
+        "suggest": "推行「90 分钟用餐温馨提醒」，60 分钟时赠送小菜并提醒，缩短等位时间"
+      },
+      {
+        "source": "周边",
+        "data": "夜市新开 2 家烧烤摊，客单价低 30%，主打便宜走量",
+        "suggest": "不要打价格战！22:00 后推出「深夜食堂」套餐（¥88 含 4 串+2 瓶啤酒），差异化竞争"
+      }
+    ],
+    "advice": [
+      {
+        "title": "🎬 老板出镜：拍一条回应抖音评论的视频",
+        "desc": "用手机拍 60 秒，老板回应「有没有包厢」问题，展示店内环境，强调牛肉每天现串",
+        "pred": "预计播放 3w+ · 到店转化 >15 桌"
+      },
+      {
+        "title": "⏱ 高峰期限时提醒提升翻台率",
+        "desc": "60 分钟时赠送一份凉拌毛豆并温馨提醒「用餐时间」，缩短翻台间隔",
+        "pred": "预计翻台率从 1.8 提升至 2.2"
+      },
+      {
+        "title": "🌙 推「深夜食堂」套餐避开价格战",
+        "desc": "22:00 后限定套餐：¥88（牛肉串 4 串 + 鸡翅 2 串 + 烤茄子 + 啤酒 2 瓶），突出性价比",
+        "pred": "预计夜间营收 +25%，避开低价竞争"
+      }
+    ],
+    "competitors": [
+      {
+        "name": "夜市摊A",
+        "action": "羊肉串 3 元/根，价格低 30%",
+        "tag": "不跟进",
+        "tagCls": "warn"
+      },
+      {
+        "name": "夜市摊B",
+        "action": "抖音团购 9.9 元 10 串",
+        "tag": "拼品质",
+        "tagCls": "warn"
+      },
+      {
+        "name": "木屋烧烤",
+        "action": "推出 99 元双人套餐（含酒水）",
+        "tag": "参考定价",
+        "tagCls": ""
+      }
+    ],
+    "adviceHistory": [
+      {
+        "date": "07/20",
+        "advice": [
+          {
+            "title": "🎬 拍一条夜市排队视频",
+            "executed": "done",
+            "result": "播放 2.1w, 带来 12 桌新客"
+          },
+          {
+            "title": "📊 回复近期差评",
+            "executed": "done",
+            "result": "评分 3.6→3.8 ✓"
+          },
+          {
+            "title": "🔥 推出等餐送毛豆活动",
+            "executed": "done",
+            "result": "差评减少 40%"
+          }
+        ]
+      },
+      {
+        "date": "07/21",
+        "advice": [
+          {
+            "title": "🎬 老板出镜回应包厢问题",
+            "executed": "done",
+            "result": "播放 1.8w, 预约 +8 桌"
+          },
+          {
+            "title": "⏱ 推行 90 分钟用餐提醒",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "🌙 深夜食堂套餐测试",
+            "executed": "done",
+            "result": "夜间营收 +18% ✓"
+          }
+        ]
+      },
+      {
+        "date": "07/22",
+        "advice": [
+          {
+            "title": "🎬 拍牛肉现串过程",
+            "executed": "done",
+            "result": "播放 3.5w, 互动率 6.2%"
+          },
+          {
+            "title": "📊 回复差评 + 送优惠券",
+            "executed": "done",
+            "result": "评分 3.8→3.9"
+          },
+          {
+            "title": "🔥 推深夜食堂套餐（正式版）",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "07/23",
+        "advice": [
+          {
+            "title": "🎬 拍顾客吃播反应",
+            "executed": "skip",
+            "result": ""
+          },
+          {
+            "title": "⏱ 翻台率提升方案执行",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "🌙 深夜食堂套餐优化",
+            "executed": "done",
+            "result": "夜间营收 +22%, 毛利 68%"
+          }
+        ]
+      }
+    ]
+  }
+}
