@@ -523,6 +523,23 @@ function loadData() {
   return JSON.parse(JSON.stringify(DEFAULT_DATA));
 }
 
+// 从 GitHub 拉取最新数据（公开读取，无需 Token）
+async function loadFromGitHub() {
+  try {
+    const r = await fetch('https://raw.githubusercontent.com/yuziyang757-lang/store-dashboard/main/data/store-data.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    for (const key of Object.keys(DEFAULT_DATA)) {
+      if (!data[key]) data[key] = JSON.parse(JSON.stringify(DEFAULT_DATA[key]));
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    return data;
+  } catch(e) {
+    console.log('从云端拉取数据失败，使用本地数据:', e.message);
+    return null;
+  }
+}
+
 // ============================================================
 //  获取 URL 参数
 // ============================================================
@@ -658,26 +675,31 @@ function renderStoreSelector(data, currentKey) {
 // ============================================================
 //  初始化
 // ============================================================
-const data = loadData();
+(async function init() {
+  // 先尝试从 GitHub 拉取最新数据
+  let data = loadData();
+  const cloudData = await loadFromGitHub();
+  if (cloudData) data = cloudData;
 
-// URL 指定门店，不传参数则不显示任何门店
-const storeParam = getUrlParam('store');
+  // URL 指定门店，不传参数则不显示任何门店
+  const storeParam = getUrlParam('store');
 
-document.getElementById('currentDate').textContent =
-  new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+  document.getElementById('currentDate').textContent =
+    new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
 
-if (!storeParam || !data[storeParam]) {
-  // 无有效门店参数，显示提示信息
-  document.getElementById('app').innerHTML = `
-    <div style="text-align:center;padding:80px 20px;color:#888;">
-      <div style="font-size:64px;margin-bottom:20px;">🔗</div>
-      <h2 style="font-size:20px;color:#333;margin-bottom:12px;">请通过老板发送的链接访问</h2>
-      <p style="font-size:14px;">每家门店有专属的查看链接，请联系门店管理员获取。</p>
-    </div>
-  `;
-} else {
-  renderDashboard(storeParam, data);
-}
+  if (!storeParam || !data[storeParam]) {
+    // 无有效门店参数，显示提示信息
+    document.getElementById('app').innerHTML = `
+      <div style="text-align:center;padding:80px 20px;color:#888;">
+        <div style="font-size:64px;margin-bottom:20px;">🔗</div>
+        <h2 style="font-size:20px;color:#333;margin-bottom:12px;">请通过老板发送的链接访问</h2>
+        <p style="font-size:14px;">每家门店有专属的查看链接，请联系门店管理员获取。</p>
+      </div>
+    `;
+  } else {
+    renderDashboard(storeParam, data);
+  }
+})();
 </script>
 </body>
 </html>
