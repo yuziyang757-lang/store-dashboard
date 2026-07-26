@@ -1415,7 +1415,7 @@ function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
 }
 
-async async function addNewStore() {
+async function addNewStore() {
   const key = 'store_' + Date.now();
   storeData[key] = {
     name: '新门店', branch: '', score: 80, revenue: 0, revenueYoY: '', revenueMoM: '',
@@ -1431,7 +1431,7 @@ async async function addNewStore() {
   renderStoreBar();
 }
 
-async async function saveEdit() {
+async function saveEdit() {
   const key = document.getElementById('editStoreSelect').value;
   const data = collectFormData();
   storeData[key] = data;
@@ -1481,7 +1481,7 @@ function updateDetailScore() {
 // ============================================================
 //  一键智能生成
 // ============================================================
-async async function doQuickGen() {
+async function doQuickGen() {
   const key = document.getElementById('editStoreSelect').value;
   const d = storeData[key] || { name: '门店', branch: '' };
 
