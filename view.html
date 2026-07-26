@@ -659,18 +659,25 @@ function renderStoreSelector(data, currentKey) {
 //  初始化
 // ============================================================
 const data = loadData();
-const storeKeys = Object.keys(data);
 
-// URL 指定门店 or 默认第一家
+// URL 指定门店，不传参数则不显示任何门店
 const storeParam = getUrlParam('store');
-const currentStore = (storeParam && data[storeParam]) ? storeParam : storeKeys[0];
 
-// 日期
 document.getElementById('currentDate').textContent =
   new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
 
-renderStoreSelector(data, currentStore);
-renderDashboard(currentStore, data);
+if (!storeParam || !data[storeParam]) {
+  // 无有效门店参数，显示提示信息
+  document.getElementById('app').innerHTML = `
+    <div style="text-align:center;padding:80px 20px;color:#888;">
+      <div style="font-size:64px;margin-bottom:20px;">🔗</div>
+      <h2 style="font-size:20px;color:#333;margin-bottom:12px;">请通过老板发送的链接访问</h2>
+      <p style="font-size:14px;">每家门店有专属的查看链接，请联系门店管理员获取。</p>
+    </div>
+  `;
+} else {
+  renderDashboard(storeParam, data);
+}
 </script>
 </body>
 </html>
