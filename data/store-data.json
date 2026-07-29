@@ -2,93 +2,222 @@
   "coffee": {
     "name": "XX咖啡店",
     "branch": "湖滨店",
-    "score": 85,
-    "revenue": 9623,
-    "revenueYoY": "+8%",
+    "score": 72,
+    "revenue": 55555,
+    "revenueYoY": "+505.9%",
     "revenueMoM": "+3.2%",
-    "traffic": 168,
-    "trafficChg": "+12%",
-    "ticket": 57.3,
-    "ticketChg": "+5%",
-    "social": "2.3w",
-    "socialChg": "+32%",
-    "rating": 4.2,
-    "ratingChg": "-0.3",
-    "delivery": 47,
-    "deliveryChg": "+8%",
-    "repeat": "23%",
-    "repeatChg": "+1.8%",
+    "traffic": 22,
+    "trafficChg": "-87.9%",
+    "ticket": 34,
+    "ticketChg": "-42.0%",
+    "social": "曝光正常",
+    "socialChg": "+5%",
+    "rating": 4,
+    "ratingChg": "+2.6%",
+    "delivery": 31,
+    "deliveryChg": "+2%",
+    "repeat": "18%",
+    "repeatChg": "+0.3%",
     "tags": [
       {
-        "text": "📈 小红书收藏 +32%",
+        "text": "📈 营收增长 +505.9%",
         "cls": ""
       },
       {
-        "text": "⚠️ 差评 +2",
-        "cls": "warn"
+        "text": "⭐ 评分良好",
+        "cls": "success"
       },
       {
-        "text": "✅ 建议已送达",
+        "text": "✅ 评分上升趋势",
         "cls": "success"
       }
     ],
     "findings": [
       {
-        "source": "小红书",
-        "data": "收藏率上涨 32%，笔记「制作过程」系列互动最高",
-        "suggest": "继续拍摄制作过程系列，今天加拍一条「拉花失败合集」"
+        "source": "📊 营收",
+        "data": "昨日营收 ¥55,555，高于近7日均值 +526.2%，环比增长趋势向好",
+        "suggest": "营收增长强劲，建议分析增长原因并保持运营节奏"
       },
       {
-        "source": "点评",
-        "data": "新增 2条差评，关键词：「等太久」「味道淡」",
-        "suggest": "今天立即回复差评，邀请再次到店送一杯新品"
+        "source": "👥 客流",
+        "data": "客流 22 人，低于近7日均值 87%，客流呈下降趋势，客单价 ¥34",
+        "suggest": "客流偏低，建议加强门口引流和线上推广，当前客单价偏低，推「饮品+轻食」套餐可提升客单"
       },
       {
-        "source": "私域",
-        "data": "社群活跃度下降 15%，上周未发任何优惠券",
-        "suggest": "今天在社群发一张「老客专享·买一送一」券"
+        "source": "⭐ 评分",
+        "data": "点评评分 4，环比上升 +2.6%，处于正常水平",
+        "suggest": "评分稳定，建议持续关注顾客反馈，保持服务品质"
       },
       {
-        "source": "天气",
-        "data": "今日阴天，气温 22°C，适合热饮推广",
-        "suggest": "主推热拿铁/热巧克力，门口小黑板写「降温了，进来暖一暖」"
+        "source": "💡 诊断",
+        "data": "营收增长但客流下降，增长来自客单价提升",
+        "suggest": "客流下降可能是涨价导致，建议保持价格但增加引流款吸引新客"
       }
     ],
     "advice": [
       {
-        "title": "📱 拍一条「老板为什么坚持现磨」",
-        "desc": "用手机拍摄 45 秒短视频，发小红书 + 抖音",
-        "pred": "预计浏览 2万 · 互动率 >5%"
+        "title": "📱 加强线上引流：拍一条门店短视频",
+        "desc": "客流偏低时加强内容推广，拍门店特色发小红书+抖音",
+        "pred": "预计带来 20+ 新客"
       },
       {
-        "title": "💰 今日限定「上班族早安套餐」",
-        "desc": "美式 + 可颂 = ¥22.9（原价 ¥32），限 10:00 前",
-        "pred": "预计带动早间营收 +18%"
+        "title": "📊 回复近期差评 + 发送优惠券",
+        "desc": "定期回复差评展现态度，私信送优惠券邀请复购",
+        "pred": "预计评分提升 0.1-0.2"
       },
       {
-        "title": "📊 回复所有差评 + 邀请复购",
-        "desc": "重点回复昨天 2 条差评，送一杯新品邀请",
-        "pred": "预计评分 1 周内回升至 4.4"
+        "title": "🎯 优化菜单：突出高毛利产品",
+        "desc": "调整菜单排版，把高毛利产品放在最显眼位置",
+        "pred": "预计毛利提升 3-5%"
       }
     ],
     "competitors": [
       {
-        "name": "瑞幸",
-        "action": "开始推「29元下午茶套餐」",
-        "tag": "不要跟价",
-        "tagCls": "warn"
-      },
-      {
-        "name": "星巴克",
-        "action": "新上「桂花系列」3 款饮品",
-        "tag": "关注热度",
+        "name": "周边同行",
+        "action": "常规运营中",
+        "tag": "持续关注",
         "tagCls": ""
       },
       {
-        "name": "Manner",
-        "action": "自带杯立减 5 元活动延长",
-        "tag": "差异化定位",
+        "name": "同品类",
+        "action": "需定期调研竞品价格和活动",
+        "tag": "差异化",
         "tagCls": ""
+      }
+    ],
+    "dailyMetrics": [
+      {
+        "date": "07/08",
+        "revenue": 8507,
+        "traffic": 152,
+        "ticket": 51.1,
+        "rating": 4
+      },
+      {
+        "date": "07/09",
+        "revenue": 8620,
+        "traffic": 137,
+        "ticket": 54.9,
+        "rating": 4.1
+      },
+      {
+        "date": "07/10",
+        "revenue": 9097,
+        "traffic": 138,
+        "ticket": 52.1,
+        "rating": 4
+      },
+      {
+        "date": "07/11",
+        "revenue": 9083,
+        "traffic": 179,
+        "ticket": 53.2,
+        "rating": 3.8
+      },
+      {
+        "date": "07/12",
+        "revenue": 9293,
+        "traffic": 184,
+        "ticket": 51.1,
+        "rating": 4.1
+      },
+      {
+        "date": "07/13",
+        "revenue": 8543,
+        "traffic": 135,
+        "ticket": 54.1,
+        "rating": 4
+      },
+      {
+        "date": "07/14",
+        "revenue": 10254,
+        "traffic": 137,
+        "ticket": 51.2,
+        "rating": 3.9
+      },
+      {
+        "date": "07/15",
+        "revenue": 10318,
+        "traffic": 144,
+        "ticket": 53.8,
+        "rating": 4
+      },
+      {
+        "date": "07/16",
+        "revenue": 9676,
+        "traffic": 159,
+        "ticket": 56.1,
+        "rating": 3.8
+      },
+      {
+        "date": "07/17",
+        "revenue": 9324,
+        "traffic": 164,
+        "ticket": 56.8,
+        "rating": 4
+      },
+      {
+        "date": "07/18",
+        "revenue": 10381,
+        "traffic": 181,
+        "ticket": 58.3,
+        "rating": 4.1
+      },
+      {
+        "date": "07/19",
+        "revenue": 10667,
+        "traffic": 163,
+        "ticket": 50.2,
+        "rating": 4.2
+      },
+      {
+        "date": "07/20",
+        "revenue": 10023,
+        "traffic": 175,
+        "ticket": 55.6,
+        "rating": 4.1
+      },
+      {
+        "date": "07/21",
+        "revenue": 10331,
+        "traffic": 185,
+        "ticket": 57.8,
+        "rating": 4.2
+      },
+      {
+        "date": "07/22",
+        "revenue": 10066,
+        "traffic": 193,
+        "ticket": 55.5,
+        "rating": 4.1
+      },
+      {
+        "date": "07/23",
+        "revenue": 10735,
+        "traffic": 199,
+        "ticket": 58.4,
+        "rating": 4.2
+      },
+      {
+        "date": "07/24",
+        "revenue": 9169,
+        "traffic": 182,
+        "ticket": 58.6,
+        "rating": 3.9
+      },
+      {
+        "date": "07/26",
+        "revenue": 1111,
+        "traffic": 112,
+        "ticket": 111,
+        "rating": 4
+      },
+      {
+        "date": "07/29",
+        "revenue": 55555,
+        "traffic": 22,
+        "ticket": 34,
+        "rating": 4
       }
     ],
     "adviceHistory": [
@@ -431,127 +560,46 @@
             "result": ""
           }
         ]
-      }
-    ],
-    "dailyMetrics": [
-      {
-        "date": "07/08",
-        "revenue": 8507,
-        "traffic": 152,
-        "ticket": 51.1,
-        "rating": 4.0
       },
       {
-        "date": "07/09",
-        "revenue": 8620,
-        "traffic": 137,
-        "ticket": 54.9,
-        "rating": 4.1
+        "date": "07/26",
+        "advice": [
+          {
+            "title": "📊 重点分析：营收下滑原因",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "📊 回复近期差评 + 发送优惠券",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "🔥 限时活动：推引流款重新激活",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
       },
       {
-        "date": "07/10",
-        "revenue": 9097,
-        "traffic": 138,
-        "ticket": 52.1,
-        "rating": 4.0
-      },
-      {
-        "date": "07/11",
-        "revenue": 9083,
-        "traffic": 179,
-        "ticket": 53.2,
-        "rating": 3.8
-      },
-      {
-        "date": "07/12",
-        "revenue": 9293,
-        "traffic": 184,
-        "ticket": 51.1,
-        "rating": 4.1
-      },
-      {
-        "date": "07/13",
-        "revenue": 8543,
-        "traffic": 135,
-        "ticket": 54.1,
-        "rating": 4.0
-      },
-      {
-        "date": "07/14",
-        "revenue": 10254,
-        "traffic": 137,
-        "ticket": 51.2,
-        "rating": 3.9
-      },
-      {
-        "date": "07/15",
-        "revenue": 10318,
-        "traffic": 144,
-        "ticket": 53.8,
-        "rating": 4.0
-      },
-      {
-        "date": "07/16",
-        "revenue": 9676,
-        "traffic": 159,
-        "ticket": 56.1,
-        "rating": 3.8
-      },
-      {
-        "date": "07/17",
-        "revenue": 9324,
-        "traffic": 164,
-        "ticket": 56.8,
-        "rating": 4.0
-      },
-      {
-        "date": "07/18",
-        "revenue": 10381,
-        "traffic": 181,
-        "ticket": 58.3,
-        "rating": 4.1
-      },
-      {
-        "date": "07/19",
-        "revenue": 10667,
-        "traffic": 163,
-        "ticket": 50.2,
-        "rating": 4.2
-      },
-      {
-        "date": "07/20",
-        "revenue": 10023,
-        "traffic": 175,
-        "ticket": 55.6,
-        "rating": 4.1
-      },
-      {
-        "date": "07/21",
-        "revenue": 10331,
-        "traffic": 185,
-        "ticket": 57.8,
-        "rating": 4.2
-      },
-      {
-        "date": "07/22",
-        "revenue": 10066,
-        "traffic": 193,
-        "ticket": 55.5,
-        "rating": 4.1
-      },
-      {
-        "date": "07/23",
-        "revenue": 10735,
-        "traffic": 199,
-        "ticket": 58.4,
-        "rating": 4.2
-      },
-      {
-        "date": "07/24",
-        "revenue": 9169,
-        "traffic": 182,
-        "ticket": 58.6,
-        "rating": 3.9
+        "date": "07/29",
+        "advice": [
+          {
+            "title": "📱 加强线上引流：拍一条门店短视频",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "📊 回复近期差评 + 发送优惠券",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "🎯 优化菜单：突出高毛利产品",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
       }
     ]
   },
@@ -568,7 +616,7 @@
     "ticketChg": "-4%",
     "social": "4.1w",
     "socialChg": "+18%",
-    "rating": 4.0,
+    "rating": 4,
     "ratingChg": "-0.1",
     "delivery": 89,
     "deliveryChg": "+22%",
