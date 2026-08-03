@@ -1053,6 +1053,21 @@ const GITHUB_REPO = 'yuziyang757-lang/store-dashboard';
 const GITHUB_DATA_PATH = 'data/store-data.json';
 const TOKEN_KEY = 'github_token';
 
+// GitHub Contents API 的 content 是 UTF-8 字节的 base64。
+// atob 只按 Latin-1 逐字节解码，直接用它会把中文拆成乱码，必须走 UTF-8。
+function base64ToUtf8(b64) {
+  const bin = atob(b64);
+  const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  bytes.forEach(b => { bin += String.fromCharCode(b); });
+  return btoa(bin);
+}
+
 function getGithubToken() {
   return localStorage.getItem(TOKEN_KEY) || '';
 }
@@ -1101,7 +1116,7 @@ async function loadFromGitHub() {
     if (r.status === 404) { updateSyncStatus('☁️ 云端暂无数据，可推送', '#888'); return false; }
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
-    const content = JSON.parse(atob(data.content));
+    const content = JSON.parse(base64ToUtf8(data.content));
     // 合并到本地数据
     for (const key of Object.keys(content)) {
       storeData[key] = content[key];
@@ -1125,7 +1140,7 @@ async function saveToGitHub() {
   if (!token) { showSyncToast('请先设置 GitHub Token', true); return false; }
   updateSyncStatus('⏳ 正在推送到云端...', '#ff9800');
   try {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(storeData, null, 2))));
+    const content = utf8ToBase64(JSON.stringify(storeData, null, 2));
     const sha = await getGithubFileSha(token);
     const body = { message: 'sync: 更新门店数据 ' + new Date().toLocaleString('zh-CN'), content };
     if (sha) body.sha = sha;
@@ -1153,7 +1168,7 @@ async function syncOnSave() {
   if (!token) return; // 没设 Token 就不自动同步
   // 静默同步，不干扰用户
   try {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(storeData, null, 2))));
+    const content = utf8ToBase64(JSON.stringify(storeData, null, 2));
     const sha = await getGithubFileSha(token);
     const body = { message: 'sync: 自动保存 ' + new Date().toLocaleString('zh-CN'), content };
     if (sha) body.sha = sha;
