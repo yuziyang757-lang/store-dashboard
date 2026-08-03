@@ -2,56 +2,56 @@
   "coffee": {
     "name": "211111",
     "branch": "湖滨店",
-    "score": 72,
-    "revenue": 55555,
-    "rating": 4,
-    "revenueYoY": "+505.9%",
-    "revenueMoM": "+3.2%",
-    "ratingChg": "+2.6%",
-    "traffic": 22,
-    "trafficChg": "-87.9%",
-    "ticket": 34,
-    "ticketChg": "-42.0%",
+    "score": 40,
+    "revenue": 2457,
+    "revenueYoY": "-2%",
+    "revenueMoM": "-1.5%",
+    "traffic": 66,
+    "trafficChg": "-8%",
+    "ticket": 43,
+    "ticketChg": "+1%",
     "social": "曝光正常",
     "socialChg": "+5%",
+    "rating": 3,
+    "ratingChg": "-0.5",
     "delivery": 31,
     "deliveryChg": "+2%",
     "repeat": "18%",
     "repeatChg": "+0.3%",
     "tags": [
       {
-        "text": "📈 营收增长 +505.9%",
+        "text": "📊 营收正常",
         "cls": ""
       },
       {
-        "text": "⭐ 评分良好",
-        "cls": "success"
+        "text": "⚠️ 评分偏低",
+        "cls": "warn"
       },
       {
-        "text": "✅ 评分上升趋势",
+        "text": "✅ 经营正常",
         "cls": "success"
       }
     ],
     "findings": [
       {
         "source": "📊 营收",
-        "data": "昨日营收 ¥55,555，高于近7日均值 +526.2%，环比增长趋势向好",
-        "suggest": "营收增长强劲，建议分析增长原因并保持运营节奏"
+        "data": "昨日营收 ¥2,457",
+        "suggest": "营收偏低，建议加大推广力度，推引流款产品"
       },
       {
         "source": "👥 客流",
-        "data": "客流 22 人，低于近7日均值 87%，客流呈下降趋势，客单价 ¥34",
+        "data": "客流 66 人，客单价 ¥43",
         "suggest": "客流偏低，建议加强门口引流和线上推广，当前客单价偏低，推「饮品+轻食」套餐可提升客单"
       },
       {
         "source": "⭐ 评分",
-        "data": "点评评分 4，环比上升 +2.6%，处于正常水平",
-        "suggest": "评分稳定，建议持续关注顾客反馈，保持服务品质"
+        "data": "点评评分 3，低于行业平均水平（4.0），需重点关注",
+        "suggest": "评分偏低，建议立即排查近期差评原因，回复每条差评并邀请复购"
       },
       {
         "source": "💡 诊断",
-        "data": "营收增长但客流下降，增长来自客单价提升",
-        "suggest": "客流下降可能是涨价导致，建议保持价格但增加引流款吸引新客"
+        "data": "经营数据正常",
+        "suggest": "建议持续关注数据变化，及时调整策略"
       }
     ],
     "advice": [
@@ -61,14 +61,14 @@
         "pred": "预计带来 20+ 新客"
       },
       {
-        "title": "📊 回复近期差评 + 发送优惠券",
-        "desc": "定期回复差评展现态度，私信送优惠券邀请复购",
-        "pred": "预计评分提升 0.1-0.2"
+        "title": "📊 紧急行动：回复差评 + 邀请复购",
+        "desc": "评分偏低时每一条差评都要回复，赠送优惠券邀请再次到店",
+        "pred": "预计评分 1-2 周回升"
       },
       {
-        "title": "🎯 优化菜单：突出高毛利产品",
-        "desc": "调整菜单排版，把高毛利产品放在最显眼位置",
-        "pred": "预计毛利提升 3-5%"
+        "title": "🎯 今日主推产品",
+        "desc": "选一款高毛利产品重点推荐，培训店员主动推荐话术",
+        "pred": "预计提升毛利 5%"
       }
     ],
     "competitors": [
@@ -83,6 +83,15 @@
         "action": "需定期调研竞品价格和活动",
         "tag": "差异化",
         "tagCls": ""
+      }
+    ],
+    "dailyMetrics": [
+      {
+        "date": "08/03",
+        "revenue": 2457,
+        "traffic": 66,
+        "ticket": 43,
+        "rating": 3
       }
     ],
     "adviceHistory": [
@@ -461,6 +470,26 @@
           },
           {
             "title": "🎯 优化菜单：突出高毛利产品",
+            "executed": "pending",
+            "result": ""
+          }
+        ]
+      },
+      {
+        "date": "08/03",
+        "advice": [
+          {
+            "title": "📱 加强线上引流：拍一条门店短视频",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "📊 紧急行动：回复差评 + 邀请复购",
+            "executed": "pending",
+            "result": ""
+          },
+          {
+            "title": "🎯 今日主推产品",
             "executed": "pending",
             "result": ""
           }
