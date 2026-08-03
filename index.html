@@ -107,6 +107,8 @@
   .card {
     background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06);
   }
+  /* 看板主体中相邻卡片间距与上文区块(hero/metrics/two-col 24px)保持一致 */
+  .dashboard > .card + .card { margin-top: 24px; }
   .card-title {
     font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px;
     border-bottom: 2px solid #f0f2f5; display: flex; align-items: center; gap: 8px;
