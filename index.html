@@ -1561,6 +1561,10 @@ function addNewStore() {
 function saveEdit() {
   const key = document.getElementById('editStoreSelect').value;
   const data = collectFormData();
+  // 保留快速录入写入的历史趋势数据（collectFormData 不包含 dailyMetrics，直接覆盖会丢失）
+  if (storeData[key] && Array.isArray(storeData[key].dailyMetrics)) {
+    data.dailyMetrics = storeData[key].dailyMetrics;
+  }
   storeData[key] = data;
   saveData();
   renderStoreBar();
@@ -1610,7 +1614,9 @@ function updateDetailScore() {
 //  一键智能生成
 // ============================================================
 function doQuickGen() {
-  const key = document.getElementById('editStoreSelect').value;
+  let key = document.getElementById('editStoreSelect').value;
+  // 门店选项未生成时回退到当前门店，避免写入空 key 垃圾数据
+  if (!key || !storeData[key]) { key = currentStore; }
   const d = storeData[key] || { name: '门店', branch: '' };
 
   const opts = {
